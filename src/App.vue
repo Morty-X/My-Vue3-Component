@@ -5,7 +5,10 @@
 </template>
 
 <script setup>
-import { useContentMenu } from './components/contentMenu';
+// 在这里引入 index.js中的 useContentMenu 方法
+// 调用此方法返回一个对象，通过解构赋值得到我们需要的 ContentMenu组件和
+// 包含操作组件的方法的 api 对象
+import { useContentMenu } from './components/contentMenu/index';
 
 const { ContentMenu, api } = useContentMenu();
 const arr1 = [

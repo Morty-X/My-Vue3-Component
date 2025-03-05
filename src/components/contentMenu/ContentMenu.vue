@@ -47,5 +47,4 @@ const props = defineProps({
 
 const emit = defineEmits(['click-outside']);
 useClickOutSide(wrapperRef, () => emit('click-outside'));
-console.log('🚀 ~ contentMenu.vue:36 ~ props:', props.position);
 </script>
