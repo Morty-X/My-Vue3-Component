@@ -88,7 +88,6 @@ const isCancel = () => {
 
 .v-leave-to {
   transform: translate3d(0, 100px, 0) scale(0.8);
-
   opacity: 0;
 }
 </style>

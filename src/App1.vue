@@ -16,6 +16,7 @@
 import { ref } from 'vue';
 import { useModal } from './components/Modal/Modal.js';
 const [Modal, modalApi] = useModal({
+  
   content: '代码是写给人看的，顺便给机器执行的！',
   cancel() {
     console.log('你点击了取消！');
@@ -24,9 +25,10 @@ const [Modal, modalApi] = useModal({
     console.log('你点击了确定！');
   },
 });
-function openModal() {
-  modalApi.open();
-}
+
+// function openModal() {
+//   modalApi.open();
+// }
 
 // 一般写法
 // const visible = ref(false);
