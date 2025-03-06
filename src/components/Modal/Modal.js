@@ -2,7 +2,7 @@ import Main from './Modal.vue';
 import { defineComponent, ref, h, reactive } from 'vue';
 export function useModal(option) {
   const visible = ref(false);
-  const mousePoint = ref({
+  const triggerPoint = ref({
     x: 0,
     y: 0,
   });
@@ -16,6 +16,8 @@ export function useModal(option) {
   };
   function onOpenModal(e) {
     console.log('🚀 ~ Modal.js:18 ~ onOpenModal ~ e:', e);
+    triggerPoint.x = e.x;
+    triggerPoint.y = e.y;
     visible.value = true;
   }
 
@@ -34,7 +36,7 @@ export function useModal(option) {
           onOpenModal,
           onCancel,
           onConfirm,
-          mousePoint: mousePoint.value,
+          triggerPoint: triggerPoint.value,
           onCloseModal() {
             modalApi.hide();
           },
