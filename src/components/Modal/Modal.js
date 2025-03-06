@@ -1,8 +1,8 @@
 import Main from './Modal.vue';
-import { ref, defineComponent, h, reactive } from 'vue';
+import { defineComponent, ref, h, reactive } from 'vue';
 export function useModal(option) {
   const visible = ref(false);
-  const mousePosition = reactive({
+  const mousePoint = ref({
     x: 0,
     y: 0,
   });
@@ -14,21 +14,33 @@ export function useModal(option) {
       visible.value = false;
     },
   };
+  function onOpenModal(e) {
+    console.log('🚀 ~ Modal.js:18 ~ onOpenModal ~ e:', e);
+    visible.value = true;
+  }
+
+  function onCancel() {
+    console.log('点击了取消');
+  }
+  function onConfirm() {
+    console.log('点击了确定');
+  }
   const Modal = defineComponent({
-    name: '我是Modal外层',
+    name: '我是Modal组件外面包裹的一层',
     setup() {
-      return () =>
-        h(Main, {
+      return () => {
+        return h(Main, {
           visible: visible.value,
-          content: option.content,
-          onCancel: option.cancel,
-          onConfirm: option.confirm,
-          onClose() {
+          onOpenModal,
+          onCancel,
+          onConfirm,
+          mousePoint: mousePoint.value,
+          onCloseModal() {
             modalApi.hide();
           },
         });
+      };
     },
   });
-
   return [Modal, modalApi];
 }
