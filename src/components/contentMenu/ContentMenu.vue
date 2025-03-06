@@ -46,5 +46,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['click-outside']);
+
 useClickOutSide(wrapperRef, () => emit('click-outside'));
+
 </script>

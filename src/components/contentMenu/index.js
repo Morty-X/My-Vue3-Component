@@ -1,4 +1,4 @@
-// 在index.js文件中 引入 右键菜单组件 
+// 在index.js文件中 引入 右键菜单组件
 import Main from './ContentMenu.vue';
 import { ref, reactive, h, defineComponent } from 'vue';
 
@@ -6,10 +6,11 @@ export const useContentMenu = () => {
   const visible = ref(false);
   const position = reactive({ x: 0, y: 0 });
   const menu = ref([]);
-  document.addEventListener('click', ({ x, y }) => {
-    position.x = x;
-    position.y = y;
-  });
+  // document.addEventListener('click', ({ x, y }) => {
+  //   position.x = x;
+  //   position.y = y;
+  // });
+
   // 屏蔽鼠标右键行为
   document.addEventListener('contextmenu', (event) => {
     event.preventDefault();
@@ -43,5 +44,6 @@ export const useContentMenu = () => {
           : null;
     },
   });
+
   return { ContentMenu, api };
 };
